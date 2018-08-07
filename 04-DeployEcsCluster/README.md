@@ -37,7 +37,7 @@ Let's create our first ECS Cluster. Click in the button **Create cluster** and t
 You will then be asked to input information about your new cluster. In the *Configure cluster* screen, keep the default values to the fields, changing just these ones:
 
 ### Configure cluster
-* Cluster name: `workshop-ecs-cluster`
+* Cluster name: `workshop-ecs-cluster-#`
 
 ### Instance configuration
 * EC2 instance type: `t2.micro`
@@ -73,7 +73,7 @@ Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2/v2/home
 
 ![choose ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/select_alb.png)
 
-Name your ALB **alb-workshop** and add an HTTP listener on port 80:
+Name your ALB `alb-workshop-#` and add an HTTP listener on port 80:
 
 ![name ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb.png)
 
@@ -85,13 +85,13 @@ When clicking in next, you should see a message saying that your load balancer i
 
 >NOTE: In a production environment, you should also have a secure listener on port 443.  This will require an SSL certificate, which can be obtained from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/), or from your registrar/any CA.  For the purposes of this workshop, we will only create the insecure HTTP listener. DO NOT RUN THIS IN PRODUCTION.
 
-Let's now create a security group to be used by your ALB. In the *Step 3: Configure Security Groups* screen, let's select the option `Create a new security group`. Change the **Security group name** to `workshop-alb-sg` and create a rule allowing all traffic in the port `80`:
+Let's now create a security group to be used by your ALB. In the *Step 3: Configure Security Groups* screen, let's select the option `Create a new security group`. Change the **Security group name** to `workshop-alb-sg-#` and create a rule allowing all traffic in the port `80`:
 
 ![create alb security group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb_sg.png)
 
 Then, click in **Next: Configure Routing**.
 
-During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change only the the **Name** to `dummy`:
+During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change only the the **Name** to `dummy-#`:
 
 ![add routing](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb_routing.png)
 
@@ -148,7 +148,7 @@ To create a Task Definition, in the [Task Definitions](https://console.aws.amazo
 
 ![type compatibility](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/task_compatibility.png)
 
-Let's add now the information about this task definition. Name your task **ecs-workshop-app**:
+Let's add now the information about this task definition. Name your task `ecs-workshop-app`:
 
 ![create task def](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_task_def.png)
 
@@ -196,7 +196,7 @@ Select `EC2` as the `Launch Type`, and choose the Task Definition created in the
 
 >In a production environment, you will always want more than one copy of each task running for reliability and availability.
 
-Name your service `ecs-service`.
+Name your service `ecs-service-#`.
 
 You can keep the default **AZ Balanced Spread** for the Task Placement Policy.  To learn more about the different Task Placement Policies, see the [documentation](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html), or this [blog post](https://aws.amazon.com/blogs/compute/introducing-amazon-ecs-task-placement-policies/).
 
